@@ -1,0 +1,24 @@
+
+version: "3.8"
+
+services:
+  userdb:
+    container_name: userdb
+    image: mysql:8.0
+    environment:
+      MYSQL_USER: springuser
+      MYSQL_PASSWORD: password
+      MYSQL_DATABASE: user_db
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - "3406:3306"
+    networks:
+      - db
+    volumes:
+      - user_db:/var/lib/mysql
+
+networks:
+  db:
+
+volumes:
+  user_db:
