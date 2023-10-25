@@ -60,4 +60,4 @@ jobs:
           app-name: 'azure-spring-test'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4E686F89D448491CA9CA360EB840655C }}
-          package: '*.war'
+          package: '*.jar'
