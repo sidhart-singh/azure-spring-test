@@ -12,14 +12,24 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_USER: springuser
+          MYSQL_PASSWORD: password
+          MYSQL_DATABASE: tasks_db
+          MYSQL_ROOT_PASSWORD: password
 
     steps:
       - uses: actions/checkout@v4
-
       - name: Set up Java version
         uses: actions/setup-java@v1
         with:
           java-version: '17'
+
+      - name: Start Mysql container
+        run: docker compose up -d
 
       - name: Build with Maven
         run: mvn clean package
