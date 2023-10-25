@@ -20,8 +20,6 @@ jobs:
           MYSQL_PASSWORD: password
           MYSQL_DATABASE: tasks_db
           MYSQL_ROOT_PASSWORD: password
-        ports:
-          - "3406:3306"
 
     steps:
       - uses: actions/checkout@v4
