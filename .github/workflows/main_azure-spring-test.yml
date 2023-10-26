@@ -6,7 +6,12 @@ name: Build and deploy WAR app to Azure Web App - azure-spring-test
 on:
   push:
     branches:
-      - main
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+    paths:
+      - "backend/**"
   workflow_dispatch:
 
 jobs:
