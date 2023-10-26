@@ -27,6 +27,7 @@ jobs:
           MYSQL_PASSWORD: password
           MYSQL_DATABASE: tasks_db
           MYSQL_ROOT_PASSWORD: password
+
     defaults:
       run:
         working-directory: ./backend
@@ -48,7 +49,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: '${{ github.workspace }}/backend/target/*.jar'
 
   deploy:
     runs-on: ubuntu-latest
