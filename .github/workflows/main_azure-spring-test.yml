@@ -51,3 +51,6 @@ jobs:
           app-name: 'azure-spring-test'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4E686F89D448491CA9CA360EB840655C }}
           package: ${{ github.workspace }}/backend/target/**.jar
+
+      - name: Run JAR on Azure Web App
+        run: java -jar /home/site/wwwroot/azure-spring-test-0.0.1-SNAPSHOT.jar
