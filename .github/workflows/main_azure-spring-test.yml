@@ -53,7 +53,4 @@ jobs:
           package: ${{ github.workspace }}/backend/target/*.jar
 
       - name: Run JAR on Azure Web App
-        run: |
-          echo "Current Working Directory: $PWD"
-          ls -al ./target
-          java -jar ${{ github.workspace }}/backend/target/*.jar
+        run: java --debug -jar ${{ github.workspace }}/backend/target/*.jar
