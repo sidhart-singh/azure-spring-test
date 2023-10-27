@@ -54,10 +54,10 @@ jobs:
 
     steps:
       - name: test
-        run: echo $(ls .)
+        run: echo "Current Working Directory:$(pwd)"
       - name: 'Deploy to Azure WebApp'
         uses: azure/webapps-deploy@v2
         with: 
           app-name: 'azure-spring-test'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4E686F89D448491CA9CA360EB840655C }}
-          package: '${{ github.workspace }}/backend/target/azure-spring-test-0.0.1-SNAPSHOT.jar'
+          package: ${{ github.workspace }}/backend/target/azure-spring-test-0.0.1-SNAPSHOT.jar
