@@ -53,6 +53,8 @@ jobs:
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
+      - name: test
+        run: echo $(ls ~${{ github.workspace }}/backend/target/)
       - name: 'Deploy to Azure WebApp'
         uses: azure/webapps-deploy@v2
         with: 
