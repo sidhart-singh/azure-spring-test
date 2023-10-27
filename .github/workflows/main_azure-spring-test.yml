@@ -54,6 +54,6 @@ jobs:
 
       - name: Run JAR on Azure Web App
         run: |
-          echo $(pwd)
-          ls -al ~/home/site/wwwroot/
-          java -jar /home/site/wwwroot/azure-spring-test-0.0.1-SNAPSHOT.jar
+          echo "Current Working Directory:$(pwd)"
+          ls -al /home/runner/work/azure-spring-test/azure-spring-test/backend/target
+          java -jar /home/runner/work/azure-spring-test/azure-spring-test/backend/target/azure-spring-test-0.0.1-SNAPSHOT.jar
