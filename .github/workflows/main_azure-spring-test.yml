@@ -28,9 +28,9 @@ jobs:
           MYSQL_DATABASE: tasks_db
           MYSQL_ROOT_PASSWORD: password
 
-    # defaults:
-    #   run:
-    #     working-directory: ./backend
+    defaults:
+      run:
+        working-directory: ./backend
 
     steps:
       - uses: actions/checkout@v4
