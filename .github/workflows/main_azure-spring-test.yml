@@ -53,4 +53,4 @@ jobs:
           package: ${{ github.workspace }}/backend/target/**.jar
 
       - name: Run JAR on Azure Web App
-        run: java -jar /home/site/wwwroot/azure-spring-test-0.0.1-SNAPSHOT.jar
+        run: java -jar /home/site/wwwroot/app.jar
