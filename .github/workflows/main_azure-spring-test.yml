@@ -56,4 +56,4 @@ jobs:
         run: |
           echo "Current Working Directory:$(pwd)"
           ls -al /home/runner/work/azure-spring-test/azure-spring-test/backend/target
-          java -jar /home/runner/work/azure-spring-test/azure-spring-test/backend/target/azure-spring-test-0.0.1-SNAPSHOT.jar
+          java -debug -jar /home/runner/work/azure-spring-test/azure-spring-test/backend/target/azure-spring-test-0.0.1-SNAPSHOT.jar
