@@ -20,10 +20,10 @@
         <docker.image.tag />
     </properties>
     <dependencies>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework.boot</groupId>-->
+<!--            <artifactId>spring-boot-starter-data-jpa</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -43,11 +43,11 @@
 
 <!--        database        -->
 <!--        mysql drive     -->
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-            <version>8.0.33</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>mysql</groupId>-->
+<!--            <artifactId>mysql-connector-java</artifactId>-->
+<!--            <version>8.0.33</version>-->
+<!--        </dependency>-->
     </dependencies>
 
     <build>
@@ -58,42 +58,42 @@
             </plugin>
 
             <!--			Containerizing			-->
-<!--            <plugin>-->
-<!--                <groupId>com.google.cloud.tools</groupId>-->
-<!--                <artifactId>jib-maven-plugin</artifactId>-->
-<!--                <version>3.3.2</version>-->
-<!--                <configuration>-->
-<!--                    <from>-->
-<!--                        <image>eclipse-temurin:17</image>-->
-<!--                        <platforms>-->
-<!--                            <platform>-->
-<!--                                <architecture>arm64</architecture>-->
-<!--                                <os>linux</os>-->
-<!--                            </platform>-->
-<!--                            <platform>-->
-<!--                                <architecture>amd64</architecture>-->
-<!--                                <os>linux</os>-->
-<!--                            </platform>-->
-<!--                        </platforms>-->
-<!--                    </from>-->
-<!--                    <to>-->
-<!--                        <image>docker.io/${docker.username}/${docker.image.name}:${project.version}</image>-->
-<!--                        <tags>-->
-<!--                            <tag>-->
-<!--                                latest-->
-<!--                            </tag>-->
-<!--                        </tags>-->
-<!--                    </to>-->
-<!--                </configuration>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <phase>package</phase>-->
-<!--                        <goals>-->
-<!--                            <goal>build</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>3.3.2</version>
+                <configuration>
+                    <from>
+                        <image>eclipse-temurin:17</image>
+                        <platforms>
+                            <platform>
+                                <architecture>arm64</architecture>
+                                <os>linux</os>
+                            </platform>
+                            <platform>
+                                <architecture>amd64</architecture>
+                                <os>linux</os>
+                            </platform>
+                        </platforms>
+                    </from>
+                    <to>
+                        <image>docker.io/${docker.username}/${docker.image.name}:${project.version}</image>
+                        <tags>
+                            <tag>
+                                latest
+                            </tag>
+                        </tags>
+                    </to>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
