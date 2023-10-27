@@ -19,14 +19,14 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    services:
-      mysql:
-        image: mysql:8.0
-        env:
-          MYSQL_USER: springuser
-          MYSQL_PASSWORD: password
-          MYSQL_DATABASE: tasks_db
-          MYSQL_ROOT_PASSWORD: password
+    # services:
+      # mysql:
+      #   image: mysql:8.0
+      #   env:
+      #     MYSQL_USER: springuser
+      #     MYSQL_PASSWORD: password
+      #     MYSQL_DATABASE: tasks_db
+      #     MYSQL_ROOT_PASSWORD: password
 
     defaults:
       run:
@@ -34,20 +34,23 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Java version
-        uses: actions/setup-java@v1
+      - uses: actions/setup-java@v3
         with:
-          java-version: '17'
+          distribution: "temurin"
+          java-version: "19"
+          cache: "maven"
 
-      - name: Start Mysql container
-        run: docker compose up -d
-
-      - name: Build with Maven
-        run: mvn clean package
-
-      - name: 'Deploy to Azure WebApp'
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{secrets.DOCKERHUB_USERNAME}}
+          password: ${{secrets.DOCKERHUB_ACCESS_TOKEN}}
+      - name: Build Package and Push with maven to Docker Hub
+        run: mvn -ntp -B package jib:build
+        
+      - name: Deploy to Azure Web App
         uses: azure/webapps-deploy@v2
-        with: 
-          app-name: 'azure-spring-test'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4E686F89D448491CA9CA360EB840655C }}
-          package: ${{ github.workspace }}/backend/target/*.jar
+        with:
+          app-name: ${{ vars.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          images: docker.io/${{ secrets.DOCKERHUB_USERNAME }}/${{ vars.DOCKER_IMAGE_NAME }}:latest
