@@ -50,10 +50,10 @@ jobs:
         with: 
           app-name: 'azure-spring-test'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_4E686F89D448491CA9CA360EB840655C }}
-          package: ${{ github.workspace }}/backend/target/**.jar
+          package: ${{ github.workspace }}/backend/target/*.jar
 
       - name: Run JAR on Azure Web App
         run: |
           echo "Current Working Directory: $PWD"
-          ls -al
-          java -jar /home/site/wwwroot/app.jar
+          ls -al ./target
+          java -jar ${{ github.workspace }}/backend/target/*.jar
